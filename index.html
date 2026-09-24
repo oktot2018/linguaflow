@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>鸿鹄 LinguaFlow · 支持中心</title>
+  <meta name="description" content="鸿鹄 LinguaFlow 完全免费的网页翻译与语言学习扩展，支持整页翻译、划词翻译、输入框翻译、视频字幕翻译和多服务商对比。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --paper:#F5F6F4;
+      --paper-raised:#FFFFFF;
+      --ink:#10202B;
+      --ink-soft:#2C3C46;
+      --slate:#5B6B76;
+      --slate-faint:#8A97A0;
+      --teal-deep:#076A83;
+      --teal:#0891B2;
+      --cyan:#00A5F4;
+      --line:#DCE2E4;
+      --line-soft:#EAEDEE;
+      --radius-s:6px;
+      --radius-m:14px;
+      --radius-l:20px;
+      --serif:"Newsreader", Georgia, "Songti SC", serif;
+      --sans:"IBM Plex Sans", -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --mono:"IBM Plex Mono", "SF Mono", Consolas, monospace;
+      background:var(--paper);
+    }
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px);}
+    body{
+      margin:0;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:var(--sans);
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+      padding-top:env(safe-area-inset-top,0px);
+      padding-bottom:env(safe-area-inset-bottom,0px);
+    }
+    .shell{max-width:920px; margin:0 auto; padding:0 24px 96px;}
+
+    /* ================= Header ================= */
+    header{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:28px 0; border-bottom:1px solid var(--line);
+    }
+    .brand{display:flex; align-items:center; gap:12px;}
+    .logo{
+      width:38px; height:38px; border-radius:10px;
+      background:linear-gradient(155deg, var(--teal-deep), var(--teal));
+      color:#fff; display:grid; place-items:center;
+      font-family:var(--serif); font-weight:600; font-size:18px;
+      box-shadow:0 4px 10px rgba(7,106,131,0.25);
+    }
+    .brand-name{font-family:var(--serif); font-weight:600; font-size:19px; color:var(--ink);}
+    .brand-name small{
+      display:block; color:var(--slate); font-weight:400; font-size:12.5px;
+      font-family:var(--sans); letter-spacing:0.04em; text-transform:uppercase; margin-top:2px;
+    }
+    .header-tag{
+      font-family:var(--mono); font-size:11.5px; color:var(--slate-faint);
+      border:1px solid var(--line); padding:5px 10px; border-radius:999px;
+    }
+
+    /* ================= Hero ================= */
+    .hero{padding:56px 0 8px;}
+    .eyebrow{
+      font-family:var(--mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+      color:var(--teal-deep); margin:0 0 14px;
+    }
+    .hero h1{
+      font-family:var(--serif); font-weight:600; font-size:36px; line-height:1.28;
+      margin:0 0 16px; color:var(--ink); max-width:640px;
+    }
+    .hero p{font-size:17px; color:var(--slate); max-width:600px; margin:0 0 22px;}
+    .badge-row{display:flex; flex-wrap:wrap; gap:10px;}
+    .badge{
+      display:inline-flex; align-items:center; gap:7px;
+      background:var(--paper-raised); border:1px solid var(--line);
+      color:var(--ink-soft); padding:7px 14px; border-radius:999px;
+      font-size:13px; font-weight:500;
+    }
+    .badge .dot{width:6px; height:6px; border-radius:50%; background:var(--teal-deep); flex-shrink:0;}
+
+    /* ================= Sections ================= */
+    section{margin-top:56px;}
+    .section-head{margin-bottom:20px;}
+    .kicker{
+      font-family:var(--mono); font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase;
+      color:var(--slate-faint); margin:0 0 6px;
+    }
+    h2{font-family:var(--serif); font-size:23px; margin:0; font-weight:600; color:var(--ink);}
+    .section-note{color:var(--slate); margin:8px 0 0; font-size:15px; max-width:600px;}
+
+    .card{
+      background:var(--paper-raised); border:1px solid var(--line);
+      border-radius:var(--radius-m); padding:24px 26px;
+    }
+
+    /* ================= Feature grid ================= */
+    .grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(258px, 1fr)); gap:14px;}
+    .feature{
+      background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius-m);
+      padding:20px 20px 22px; transition:border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+    }
+    .feature:hover{
+      border-color:var(--teal-deep);
+      box-shadow:0 10px 24px rgba(16,32,43,0.06);
+      transform:translateY(-2px);
+    }
+    .feature .num{
+      font-family:var(--mono); font-size:12px; font-weight:600; color:var(--teal-deep);
+      background:var(--line-soft); display:inline-block; padding:3px 9px; border-radius:6px; margin-bottom:12px;
+    }
+    .feature h3{margin:0 0 7px; font-size:16px; font-weight:600; color:var(--ink);}
+    .feature p{margin:0; font-size:14px; color:var(--slate); line-height:1.55;}
+
+    /* ================= Steps ================= */
+    ol.steps{list-style:none; padding:0; margin:0; counter-reset:step;}
+    ol.steps li{
+      counter-increment:step;
+      position:relative;
+      padding:0 0 26px 44px;
+      border-left:1px solid var(--line);
+      margin-left:15px;
+    }
+    ol.steps li:last-child{padding-bottom:0; border-left-color:transparent;}
+    ol.steps li::before{
+      content:counter(step);
+      position:absolute; left:-16px; top:-2px;
+      width:32px; height:32px; border-radius:50%;
+      background:var(--teal-deep); color:#fff;
+      font-family:var(--mono); font-size:13px; font-weight:600;
+      display:grid; place-items:center;
+    }
+    ol.steps .step-title{font-weight:600; color:var(--ink); margin-bottom:3px;}
+    ol.steps .step-body{color:var(--slate); font-size:14.5px;}
+
+    /* ================= FAQ ================= */
+    details{
+      border:1px solid var(--line); border-radius:var(--radius-m);
+      background:var(--paper-raised); margin-bottom:10px; overflow:hidden;
+    }
+    summary{
+      cursor:pointer; padding:18px 22px; font-weight:600; font-size:15.5px; color:var(--ink);
+      list-style:none; display:flex; justify-content:space-between; align-items:center; gap:16px;
+    }
+    summary::-webkit-details-marker{display:none;}
+    summary::after{
+      content:"+"; color:var(--teal-deep); font-size:20px; font-weight:400; flex-shrink:0;
+      width:22px; height:22px; display:grid; place-items:center;
+    }
+    details[open] summary::after{content:"–";}
+    details[open] summary{border-bottom:1px solid var(--line);}
+    details .body{padding:16px 22px 20px; color:var(--slate); font-size:15px;}
+
+    /* ================= Privacy list ================= */
+    .privacy-list{margin:0; padding-left:20px; color:var(--slate); font-size:15px;}
+    .privacy-list li{margin-bottom:8px;}
+    .privacy-list li:last-child{margin-bottom:0;}
+
+    /* ================= Contact ================= */
+    .contact-card{
+      display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
+    }
+    .contact-card p{margin:0; color:var(--slate); font-size:15px;}
+    .contact-btn{
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--teal-deep); color:#fff; text-decoration:none;
+      padding:11px 20px; border-radius:999px; font-weight:600; font-size:14.5px;
+      transition:background .15s ease, transform .15s ease;
+      white-space:nowrap;
+    }
+    .contact-btn:hover{background:var(--teal); transform:translateY(-1px);}
+
+    a{color:var(--teal-deep); text-decoration:none;}
+    a:hover{text-decoration:underline;}
+    code{background:var(--line-soft); padding:2px 7px; border-radius:5px; font-family:var(--mono); font-size:13px; color:var(--ink-soft);}
+
+    footer{
+      margin-top:64px; padding-top:24px; border-top:1px solid var(--line);
+      color:var(--slate-faint); font-size:13px; line-height:1.8;
+      display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    }
+
+    @media (max-width:600px){
+      .hero h1{font-size:29px;}
+      .contact-card{flex-direction:column; align-items:flex-start;}
+      footer{flex-direction:column;}
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="brand">
+        <span class="logo">L</span>
+        <span class="brand-name">鸿鹄 LinguaFlow<small>Support Center</small></span>
+      </div>
+      <span class="header-tag"></span>
+    </header>
+
+    <div class="hero">
+      <p class="eyebrow">支持中心</p>
+      <h1>完全免费的网页翻译与语言学习扩展</h1>
+      <p>鸿鹄 LinguaFlow 帮助你在任何网站上深入学习语言。核心翻译与学习功能全部开放，无需注册、无需付费即可使用。</p>
+      <div class="badge-row">
+        <span class="badge"><span class="dot"></span>完全免费</span>
+        <span class="badge"><span class="dot"></span>无需注册</span>
+        <span class="badge"><span class="dot"></span>设置本地保存</span>
+      </div>
+    </div>
+
+    <section id="features">
+      <div class="section-head">
+        <p class="kicker">Features</p>
+        <h2>主要功能</h2>
+        <p class="section-note">所有功能开箱即用，可自由组合与配置。</p>
+      </div>
+      <div class="grid">
+        <div class="feature"><span class="num">01</span><h3>网页翻译</h3><p>支持整页翻译、双语对照和仅译文模式，可自动或手动控制范围，支持 30+ 种语言互译。</p></div>
+        <div class="feature"><span class="num">02</span><h3>划词与选中翻译</h3><p>选中网页文字即可快速翻译、朗读和复制，让阅读外文内容更轻松。</p></div>
+        <div class="feature"><span class="num">03</span><h3>输入框翻译</h3><p>在聊天、评论、搜索或写作时快速翻译输入内容。</p></div>
+        <div class="feature"><span class="num">04</span><h3>视频字幕翻译</h3><p>支持 YouTube 等平台字幕翻译、双语字幕显示和字幕样式自定义。</p></div>
+        <div class="feature"><span class="num">05</span><h3>多服务商翻译对比</h3><p>可同时使用多个 AI 翻译服务对比结果，支持自定义 API 服务、模型和参数。</p></div>
+        <div class="feature"><span class="num">06</span><h3>语音朗读</h3><p>支持朗读原文或翻译结果，可调整朗读语言和语速。</p></div>
+        <div class="feature"><span class="num">07</span><h3>术语表</h3><p>可添加常用词汇和固定翻译，让翻译结果更符合你的表达习惯。</p></div>
+        <div class="feature"><span class="num">08</span><h3>快捷键与悬浮球</h3><p>支持自定义快捷键和悬浮按钮，随时快速开启或关闭翻译功能。</p></div>
+        <div class="feature"><span class="num">09</span><h3>多语言界面</h3><p>支持多种界面显示语言，方便不同地区的用户使用。</p></div>
+        <div class="feature"><span class="num">10</span><h3>浅色与深色主题</h3><p>可根据个人喜好或系统设置自动切换界面外观。</p></div>
+      </div>
+    </section>
+
+    <section id="quickstart">
+      <div class="section-head">
+        <p class="kicker">Getting Started</p>
+        <h2>快速开始</h2>
+      </div>
+      <div class="card">
+        <ol class="steps">
+          <li>
+            <div class="step-title">安装扩展</div>
+            <div class="step-body">从 Chrome 应用商店安装鸿鹄 LinguaFlow。</div>
+          </li>
+          <li>
+            <div class="step-title">打开设置</div>
+            <div class="step-body">点击浏览器工具栏中的扩展图标，打开悬浮窗或设置页面。</div>
+          </li>
+          <li>
+            <div class="step-title">配置翻译服务</div>
+            <div class="step-body">在「提供商配置」中选择或添加你使用的 AI 翻译服务，必要时填写自己的 API Key。</div>
+          </li>
+          <li>
+            <div class="step-title">开始使用</div>
+            <div class="step-body">打开任意网页开始翻译，或选中文字、输入框内容快速翻译。</div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="section-head">
+        <p class="kicker">FAQ</p>
+        <h2>常见问题</h2>
+      </div>
+
+      <details open>
+        <summary>鸿鹄 LinguaFlow 收费吗？</summary>
+        <div class="body">完全不收费。所有核心翻译与学习功能都免费开放，没有付费解锁，也没有使用次数、时间或功能限制。</div>
+      </details>
+
+      <details>
+        <summary>需要注册或登录吗？</summary>
+        <div class="body">不需要。本扩展无需账号即可使用，也没有登录、托管 AI 或订阅等功能。</div>
+      </details>
+
+      <details>
+        <summary>使用第三方 AI 服务如何收费？</summary>
+        <div class="body">如果你自行连接第三方 AI 服务并填写自己的 API Key，该服务是否收费以对应服务商的官方政策为准。本扩展本身不收取任何费用。</div>
+      </details>
+
+      <details>
+        <summary>我的数据保存在哪里？</summary>
+        <div class="body">所有设置默认保存在本地浏览器中，不会上传到我们的服务器。你可以随时导入、导出或重置设置。</div>
+      </details>
+
+      <details>
+        <summary>如何添加自己的 AI 服务商？</summary>
+        <div class="body">进入设置页的「提供商配置」，点击「添加提供商」，选择内置服务商，或使用自定义 API 接入兼容 Chat Completions / Open Responses 的服务。</div>
+      </details>
+
+      <details>
+        <summary>支持哪些浏览器？</summary>
+        <div class="body">当前提供 Chrome 版本，可在基于 Chromium 的浏览器中加载使用。</div>
+      </details>
+    </section>
+
+    <section id="privacy">
+      <div class="section-head">
+        <p class="kicker">Privacy</p>
+        <h2>隐私与数据</h2>
+      </div>
+      <div class="card">
+        <p style="margin:0 0 12px; color:var(--slate)">鸿鹄 LinguaFlow 以本地运行为主：</p>
+        <ul class="privacy-list">
+          <li>设置与配置默认保存在本地，可随时导出、导入或重置。</li>
+          <li>除非你主动连接第三方 AI 服务，否则不会上传你的文本或数据。</li>
+          <li>各 AI 服务商的名称与图标归其所有者所有，仅用于标识可接入的服务。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-head">
+        <p class="kicker">Contact</p>
+        <h2>联系支持</h2>
+      </div>
+      <div class="card contact-card">
+        <p>如遇到问题或有功能建议，欢迎通过邮件与开发者联系，通常会在 1-2 个工作日内回复。</p>
+        <a class="contact-btn" href="mailto:oktot2018@gmail.com">发送邮件 →</a>
+      </div>
+    </section>
+
+    <footer>
+      <span>鸿鹄 LinguaFlow · 完全免费的网页翻译与语言学习扩展</span>
+      <span>第三方 AI 服务的收费政策以其服务商官方说明为准</span>
+    </footer>
+  </div>
+</body>
+</html>
